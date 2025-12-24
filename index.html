@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Guinchos - Controle de Serviços</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Manifesto PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#001f3f">
+
+  <!-- Ícone -->
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+</head>
+<body>
+  <header>
+    <h1>Le Guinchos</h1>
+  </header>
+
+  <main class="container">
+    <!-- Formulário CRUD -->
+    <form id="formServico">
+      <input type="text" id="cliente" placeholder="Nome do Cliente" required>
+      <input type="text" id="seguradora" placeholder="Seguradora" required>
+      <input type="datetime-local" id="horario" required>
+      <input type="number" id="valor" placeholder="Valor" required>
+      <input type="number" id="desconto" placeholder="Desconto (%)" required>
+      <button type="submit">Adicionar Serviço</button>
+    </form>
+
+    <!-- Lista de serviços -->
+    <h2>Serviços</h2>
+    <div class="carrossel">
+      <table id="tabelaServicos">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Seguradora</th>
+            <th>Horário</th>
+            <th>Valor</th>
+            <th>Desconto</th>
+            <th>Valor Final</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Botão relatório -->
+    <button id="btnRelatorio">Gerar Relatório</button>
+  </main>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+
+  <!-- Registro do Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch(err => console.error("Erro no Service Worker:", err));
+    }
+  </script>
+</body>
+</html>
